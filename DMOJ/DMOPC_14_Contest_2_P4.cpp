@@ -2,6 +2,8 @@
 
 using namespace std;
 
+// https://dmoj.ca/problem/dmopc14c2p4
+
 typedef vector<int> vi;
 typedef long long ll;
 
@@ -22,6 +24,34 @@ void solve() {
 
 int main() {
     fast
+
+    scann(N);
+    vi trees;
+    vi prefix;
+
+    FR(i, N) {
+        scann(x);
+        trees.push_back(x);
+    }
+
+    prefix.push_back(trees[0]);
+
+    for(int i = 1; i < trees.size(); i++) {
+        prefix.push_back(prefix[i - 1] + trees[i]);
+    }
+
+    scann(Q);
+
+    FR(i, Q) {
+        int l, r;
+        cin >> l >> r;
+
+        if (l == 0){
+            cout << prefix[r] << endl;
+        } else {
+            cout << prefix[r] - prefix[l - 1] << endl;
+        }
+    }
 
     return 0;
 }

@@ -24,13 +24,12 @@ void print()
 }
 
 int main() {
-    local
+    fast
 
-    scann(n);
-    const int N = 5;
-    int arr[N][N];
-    int pr[N][N];
-    int pl[N][N];
+    scann(N);
+    vector<vi> arr(N, vi(N));
+    vector<vi> pr(N, vi(N));
+    vector<vi> pl(N, vi(N));
 
     scanArr2D(arr, N, N);
 
@@ -50,20 +49,26 @@ int main() {
         }
     }
 
+    
     FR(i, N) {
         FORR(j, N - 1, 0) {
             if (i == 0) {
                 pl[i][j] = arr[i][j];
             } else if (j == N - 1) {
                 pl[i][j] = arr[i][j];
-            } else {
+            } 
+            
+            
+            else {
                 pl[i][j] = pl[i - 1][j + 1] + arr[i][j];
             }
         }
     }
 
-    FR(i, N)
-    {
+    /*
+    cout << endl;
+    
+    FR(i, N) {
         FR(j, N) {
             cout << pr[i][j] << " ";
         }
@@ -79,14 +84,36 @@ int main() {
         }
 
         cout << endl;
+    }*/
+
+    int mx = 0;
+
+    FOR(size, 2, N + 1) {
+        FR(i, N - size + 1) {
+            FR(j, N - size + 1) {
+                int A = 0;
+                int B = 0;
+
+                if(i == 0 || j == 0) {
+                    A = pr[i + (size - 1)][j + (size - 1)];
+                } else {
+                    A = pr[i + (size - 1)][j + (size - 1)] - pr[i - 1][j - 1];
+                }
+
+                if (i == 0 || j + size == N) {
+                    B = pl[i + (size - 1)][j];
+                }
+                else {
+                    B = pl[i + (size - 1)][j] - pl[i - 1][j + size];
+                }
+
+                int beauty = A - B;
+                mx = max(beauty, mx);
+            }
+        }
     }
+
+    cout << mx << endl;
 
     return 0;
 }
-/*
-if (j == 0) {
-                pr[i][j] = arr[i][j];
-            } else {
-                pr[i][j] = pr[i - 1][j - 1] + arr[i][j];
-            }
-*/
