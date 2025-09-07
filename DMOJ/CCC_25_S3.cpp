@@ -47,11 +47,18 @@ int main() {
         scan(z);
 
         if(x == 1) {
-            p[i + 1].first = z;
+            p[i].first = z;
         } else {
-            p[i + 1].second = z;
+            p[i].second = z;
         }
     }
+
+    // Sort pens  by highest prettiness value
+    std::sort(p.begin(), p.end(), [](auto &left, auto &right) {
+        return left.second < right.second;
+    });
+
+    
 
     return 0;
 }
