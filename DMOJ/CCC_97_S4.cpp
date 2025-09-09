@@ -23,14 +23,15 @@ void solve() {
 }
 
 int main() {
-    local
+    fast
     map<string, int> dict;
 
     scann(N);
 
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
     while(N > 0) {
         string result;
-        map<string, int> dict;
 
         string line;
         getline(cin, line);
@@ -39,6 +40,10 @@ int main() {
         string word;
 
         if (line.empty()) {
+            /*for (auto c : dict) {
+                cout << c.first << ": " << c.second << endl;
+            }*/
+
             break;
         }
 
