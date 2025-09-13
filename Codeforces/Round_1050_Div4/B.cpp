@@ -25,14 +25,19 @@ int main() {
 
     scann(t);
     while (t--) {
-        int x, n;
-        cin >> x >> n;
+        int n, m, x, y;
 
-        if(n % 2 == 0) {
-            cout << 0 << endl;
-        } else {
-            cout << x << endl;
+        cin >> n >> m >> x >> y;
+
+        FR(i, n) {
+            scann(a);
         }
+
+        FR(i, m) {
+            scann(b);
+        }
+
+        cout << n + m << endl;
     }
 
     return 0;
