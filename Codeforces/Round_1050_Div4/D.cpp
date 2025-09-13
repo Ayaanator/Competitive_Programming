@@ -46,9 +46,9 @@ int main() {
         sort(odd.begin(), odd.end());
 
         if(odd.size() == 0) {
-            cout << 0 << endl;
-        } if(odd.size() == 1 && even.size() == 0) {
-            cout << 0 << endl;
+            d = 0;
+        } else if(odd.size() == 1 && even.size() == 0) {
+            d = odd[0];
         } else {
             bool run = true;
 
