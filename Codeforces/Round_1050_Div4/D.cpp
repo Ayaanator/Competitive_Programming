@@ -25,12 +25,15 @@ int main() {
 
     scann(t);
     while (t--) {
-        int n, m;
-        vi even;
-        vi odd;
+        vector<long long> even, odd;
+        long long d = 0;
+        long long x;
+        bool on = false;
+
+        scann(n);
 
         FR(i, n) {
-            scann(x);
+            cin >> x;
             
             if(x % 2 == 0) {
                 even.push_back(x);
@@ -38,6 +41,66 @@ int main() {
                 odd.push_back(x);
             }
         }
+
+        sort(even.begin(), even.end());
+        sort(odd.begin(), odd.end());
+
+        if(odd.size() == 0) {
+            cout << 0 << endl;
+        } if(odd.size() == 1 && even.size() == 0) {
+            cout << 0 << endl;
+        } else {
+            bool run = true;
+
+            while(run) {
+                run = (!even.empty() || !odd.empty());
+
+                if(!run) {
+                    break;
+                }
+
+                if(!on) {
+                    if(odd.empty()) {
+                        run = false;
+                    } else{
+                        on = !on;
+
+                        if (on) {
+                            d += odd.back();
+                        }
+                        
+                        odd.pop_back();
+                    }
+                } else {
+                    if(!even.empty()) {
+                        d += even.back();
+                        even.pop_back();
+                    }
+                    else if (!odd.empty()) {
+                        on = !on;
+
+                        if(on) {
+                            d += odd.back();
+                        }
+
+                        odd.pop_back();
+                    }
+                }
+            }
+        }
+
+        /*cout << "Even numbers: ";
+        for (int num : even) {
+            cout << num << " ";
+        }
+        cout << endl;
+
+        cout << "Odd numbers: ";
+        for (int num : odd) {
+            cout << num << " ";
+        }*/
+
+        cout << d << endl;
     }
 
     return 0;
