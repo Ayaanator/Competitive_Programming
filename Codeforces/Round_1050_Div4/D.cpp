@@ -26,11 +26,17 @@ int main() {
     scann(t);
     while (t--) {
         int n, m;
-        vi d;
+        vi even;
+        vi odd;
 
         FR(i, n) {
             scann(x);
-            d.push_back(x);
+            
+            if(x % 2 == 0) {
+                even.push_back(x);
+            } else {
+                odd.push_back(x);
+            }
         }
     }
 

@@ -21,7 +21,7 @@ void solve() {
 }
 
 int main() {
-    local
+    fast
 
     scann(t);
     while (t--) {
@@ -39,11 +39,23 @@ int main() {
         }
 
         if (tasks[0].second != s) {
-            if (tasks[0].first < 2) {
-                p++;
-                s = tasks[0].second;
+
+            if(tasks[0].first % 2 == 0) {
+                p += tasks[0].first - 1;
+            } else {
+                p += tasks[0].first;
+            }
+
+        } else {
+            
+            if(tasks[0].first % 2 == 0) {
+                p += tasks[0].first;
+            } else {
+                p += tasks[0].first - 1;
             }
         }
+
+        s = tasks[0].second;
 
         for(int i = 1; i < tasks.size(); i++) {
             
