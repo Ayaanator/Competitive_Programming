@@ -16,6 +16,8 @@ typedef long long ll;
 #define scanArr2D(arr, n, m) FR(i, n) FR(j, m) scan(arr[i][j])
 #define SZ(v) ((int) (v).size())
 
+// https://codeforces.com/problemset/problem/2131/B
+
 void solve() {
     scann(x);
 

@@ -1,3 +1,5 @@
+// https://dmoj.ca/problem/acc3p1
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -21,6 +23,13 @@ void solve() {
 
 int main() {
     fast
+
+    scann(N);
+    scann(K);
+
+    FR(i, N) {
+        
+    }
 
     return 0;
 }
