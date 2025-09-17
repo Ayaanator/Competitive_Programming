@@ -22,14 +22,41 @@ void solve() {
 }
 
 int main() {
-    fast
+    local
 
     scann(N);
     scann(K);
+    vi list;
+    int res = 0;
 
     FR(i, N) {
-        
+        scann(x);
+        list.push_back(x);
     }
+
+    if(list.size() == 0) {
+        return 0;
+    }
+
+    int l = 0;
+    int r = 1;
+
+    while(r < list.size()) {
+        set<int> unique;
+
+        for(int i = l; i < r; i++) {
+            unique.insert(list[i]);
+        }
+
+        if(unique.size() >= K) {
+            l++;
+            res += list.size() - (r);
+        } else {
+            r++;
+        }
+    }
+
+    cout << res << endl;
 
     return 0;
 }
