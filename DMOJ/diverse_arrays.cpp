@@ -22,7 +22,7 @@ void solve() {
 }
 
 int main() {
-    local
+    fast
 
     scann(N);
     scann(K);
@@ -44,7 +44,7 @@ int main() {
     while(r < list.size()) {
         set<int> unique;
 
-        for(int i = l; i < r; i++) {
+        for(int i = l; i <= r; i++) {
             unique.insert(list[i]);
         }
 
