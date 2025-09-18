@@ -35,24 +35,23 @@ int32_t main() {
 
     for(int l = 0 , r = 0; r < N; r++){
 
-        if(freq[arr[r]] == 0) {
-            freq[arr[r]]++;
-            res++;
-            //1 1 1
-            while(res >= K) {
-                ctr += N - r;
-                freq[arr[l]]--;
+        if(freq[arr[r]] == 0) res++;
+            
+        freq[arr[r]]++;
+            
+        while(res >= K) {
+            ctr += N - r;
+            freq[arr[l]]--;
 
-                if (freq[arr[l]] == 0) {
-                    res--;
-                }
-
-                l++;
+            if (freq[arr[l]] == 0) {
+                res--;
             }
 
-        } else {
-            freq[arr[r]]++;
+            l++;
         }
+
+      
+        
     }
 
     cout << ctr << endl;
