@@ -1,8 +1,5 @@
 #include <bits/stdc++.h>
-
 using namespace std;
-
-// https://dmoj.ca/problem/ccc25s3
 
 typedef vector<int> vi;
 typedef long long ll;
@@ -18,45 +15,27 @@ typedef long long ll;
 #define scanArr2D(arr, n, m) FR(i, n) FR(j, m) scan(arr[i][j])
 #define SZ(v) ((int) (v).size())
 
-void solve() {
-    
+vi maxSlidingWindow(vi nums, int k) {
+    deque<int> q;
+    vector<int> res;
+
+    for(int i = 0; i < nums.size(); i++) {
+        while(!q.empty() && nums[q.back()] <= nums[i]) {
+            
+        }
+    }
 }
 
 int main() {
     fast
 
-    int N, M, Q;
-    vector<pair<int, int>> p;
+    vi res = maxSlidingWindow({ 1, 3, -1, -3, 5, 3, 6, 7 }, 3);
 
-    scan(N);
-    scan(M);
-    scan(Q);
-
-    FR(i, N) {
-        int C, P;
-        scan(C);
-        scan(P);
-
-        p.push_back( { C, P } );
+    for(int i = 0; i < res.size(); i++) {
+        cout << res[i] << " ";
     }
 
-    FR(i, Q) {
-        int x, y, z;
-        scan(x);
-        scan(y);
-        scan(z);
-
-        if(x == 1) p[i].first = z;
-        else p[i].second = z;
-        
-    }
-
-    // Sort pens  by highest prettiness value
-    std::sort(p.begin(), p.end(), [](auto &left, auto &right) {
-        return left.second < right.second;
-    });
-
-    
+    cout << "\n";
 
     return 0;
 }
