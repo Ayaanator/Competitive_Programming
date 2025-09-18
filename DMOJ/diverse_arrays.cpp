@@ -16,6 +16,9 @@ typedef long long ll;
 #define scanArr(arr, n)  FR(i, n) scan(arr[i])
 #define scanArr2D(arr, n, m) FR(i, n) FR(j, m) scan(arr[i][j])
 #define SZ(v) ((int) (v).size())
+const int MN = 1e6 + 1; 
+ll N, K;
+int arr[MN], freq[MN];
 
 void solve() {
     
@@ -24,38 +27,32 @@ void solve() {
 int main() {
     fast
 
-    scann(N);
-    scann(K);
-    vi list;
     int res = 0;
 
-    FR(i, N) {
-        scann(x);
-        list.push_back(x);
-    }
+    FR(i, N) scan(arr[i]);
+    
+    int l = 0, r=0;
+    
 
-    if(list.size() == 0) {
-        return 0;
-    }
+    for(int l=0 , r=0; r<N; r++){
+        //process new items
+        //check condition while(condition is true){
 
-    int l = 0;
-    int r = 1;
+            //process our item
+            //l++
+        
+    //}
 
-    while(r < list.size()) {
-        set<int> unique;
+    //add to the counter or something after 
 
-        for(int i = l; i <= r; i++) {
-            unique.insert(list[i]);
+        if(freq[r] == 0) {
+            
         }
 
-        if(unique.size() >= K) {
-            l++;
-            res += list.size() - (r);
-        } else {
-            r++;
-        }
     }
 
+
+    //1 1 1 1 2 1
     cout << res << endl;
 
     return 0;
