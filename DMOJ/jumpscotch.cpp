@@ -35,6 +35,7 @@ int main() {
 
     scanArr(arr, N);
     int score = arr[0];
+    dp[0] = arr[0];
 
     deque<int> q;
 
@@ -44,8 +45,7 @@ int main() {
         q.push_back(i);
 
         if(q.front() == i - D) q.pop_front();
-        if(i >= D - 1) res.push_back(nums[q.front()]);
-        
+        if(i >= D - 1) dp[i] = res[q.front()];
     }
 
     return 0;
