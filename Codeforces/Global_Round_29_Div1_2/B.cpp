@@ -25,26 +25,40 @@ const bool DEBUG_MODE = true;
 #define dbgArrP(arr,n) if(DEBUG_MODE){ cerr<<#arr<<": "; FR(_i,n) cerr<<"("<<(arr)[_i].fs<<","<<(arr)[_i].sd<<") "; cerr<<endl; }
 #define dbgArr2D(arr,m,n) if(DEBUG_MODE){ cerr<<#arr<<":\n"; FR(i,m){ FR(j,n) cerr<<arr[i][j]<<" "; cerr<<endl; } }
 
-void print_arr(vi arr) {
-    for(auto c : arr) {
-        cout << c << " ";
-    }
-
+void print_arr(int ar[], int x) {
+    for(int i = 0; i < x; i++) cout << ar[i] << " ";
     cout << endl;
 }
 
 void solve() {
-    scann(n);
-    
+    ll n;
+    cin >> n;
+    ll r = n * 2;
+    int arr[r] { 0 };
 
+    for(int num = n; num >= 1; num--) {
+        for(int pos2 = 2*n-1; pos2 >= num; pos2--) {
+
+            int pos1 = pos2 - num;
+            if(arr[pos1] == 0 && arr[pos2] == 0) {
+                    arr[pos1] = num;
+                    arr[pos2] = num;
+                    break;
+            }
+        }
+    }
+
+    for(int i = 0; i < 2*n; i++) {
+        if(arr[i] == 0) arr[i] = 1;
+    }
+
+    print_arr(arr, r);
 }
  
 int main() {
-    fast
+    local
     scann(t);
-    while(t--) {
-        solve();
-    }
- 
+    while(t--) solve();
+    
     return 0;
 }
