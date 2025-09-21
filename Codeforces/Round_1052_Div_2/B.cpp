@@ -17,36 +17,9 @@ typedef long long ll;
 
 void solve() {
     scann(n);
-    int arr[n] = { 0 };
-    map<int, int> freq;
-    int res = 0;
-    int minf = 0;
+    scann(m);
+    
 
-    FR(i, n) {
-        scann(x);
-        arr[i] = x;
-
-        freq[x]++;
-    };
-
-    for(auto it1 = freq.begin(); it1 != freq.end(); it1++) {
-        int ctr = 1;
-        minf = it1->second;
-
-        for(auto it2 = next(it1); it2 != freq.end(); it2++) {
-            int common = min(it1->second, it2->second);
-            minf = min(minf, common);
-            ctr++;
-            res = max(res, ctr * minf);
-        }
-    }
-
-    if(freq.size() == 1) {
-        auto it = freq.begin();
-        cout << it->second << "\n";
-    } else {
-        cout << res << endl;
-    }
 }
 
 int main() {
