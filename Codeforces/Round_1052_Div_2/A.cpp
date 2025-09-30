@@ -29,6 +29,11 @@ void solve() {
         freq[x]++;
     };
 
+    if(n == 1) {
+        cout << 1 << endl;
+        return;
+    }
+
     for(auto it1 = freq.begin(); it1 != freq.end(); it1++) {
         int ctr = 1;
         minf = it1->second;
