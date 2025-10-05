@@ -34,9 +34,9 @@ int main() {
     }
 
     prefix[0] = arr[0];
-    
+
     for(int i = 1; i < N * 2; i++) {
-        prefix[i] = prefix[N - 1] + arr[i];
+        prefix[i] = prefix[i - 1] + arr[i];
     }
 
     deque<int> mn;
