@@ -29,11 +29,10 @@ const bool DEBUG_MODE = true;
 
 #define int long long
 void solve() {
-    
     scann(N);
     scann(K);
-    vector<int> arr(N);
 
+    vector<int> arr(N);
     scanArr(arr, N);
 
     deque<int> mx;
@@ -51,12 +50,9 @@ void solve() {
             if(!mx.empty()&& mx.front() == l) mx.pop_front();
             if(!mn.empty()&&mn.front() == l) mn.pop_front();
             l++;
-
-
         }
 
         ctr += (r - l) + 1;
-        
     }
 
     cout << ctr << "\n";
@@ -68,7 +64,5 @@ int32_t main() {
     #endif
 
     solve();
-   
- 
     return 0;
 }

@@ -20,7 +20,6 @@ typedef long long ll;
 const int MX = 1e6 + 1;
 int arr[MX];
 int dp[MX];
-int res[MX];
 int N = 0;
 
 void solve() {
@@ -32,21 +31,40 @@ int main() {
 
     scann(N);
     scann(D);
+    D++;
 
-    scanArr(arr, N);
+    for(int i = 0; i < N; i++) {
+        scann(x);
+        arr[i] = x;
+        dp[i] = x;
+    }
+
     int score = arr[0];
     dp[0] = arr[0];
 
-    deque<int> q;
+    deque<int> mn;
 
-    for(int i = 1; i < N; i++) {
-        while(!q.empty() && arr[q.back()] >= arr[i]) q.pop_back();
-        
-        q.push_back(i);
+    for(int i = 1; i < D; i++) {
+        dp[i] += dp[0];
 
-        if(q.front() == i - D) q.pop_front();
-        if(i >= D - 1) dp[i] = res[q.front()];
+        while(!mn.empty() && dp[mn.back()] > dp[i]) mn.pop_back();        
+        mn.push_back(i);
+        if(mn.front() == i - D) mn.pop_front();
     }
+
+    for(int i = D; i < N; i++) {
+        if(mn.front() == i - D) mn.pop_front();
+        dp[i] = arr[i] + dp[mn.front()];
+        
+        while(!mn.empty() && dp[mn.back()] > dp[i]) mn.pop_back();        
+        mn.push_back(i);
+    }
+
+    for(int i = 0; i < N; i++) {
+        cout << dp[i] << " ";
+    }
+
+    cout << endl;
 
     return 0;
 }
