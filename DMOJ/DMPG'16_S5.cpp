@@ -45,7 +45,7 @@ int main() {
     FR(i, N * 2) {
         while(!mn.empty() && prefix[mn.back()] > prefix[i]) mn.pop_back();        
         mn.push_back(i);
-        if(mn.front() == i - K) mn.pop_front();
+        if(!mn.empty() && mn.front() <= i - K) mn.pop_front();
 
         mx = max(mx, prefix[i] - prefix[mn.front()]);
     }
