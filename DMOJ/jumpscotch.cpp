@@ -60,11 +60,7 @@ int main() {
         mn.push_back(i);
     }
 
-    for(int i = 0; i < N; i++) {
-        cout << dp[i] << " ";
-    }
-
-    cout << endl;
+    cout << dp[N - 1] << "\n";
 
     return 0;
 }
