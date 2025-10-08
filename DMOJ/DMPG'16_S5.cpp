@@ -17,12 +17,12 @@ typedef long long ll;
 #define scanArr2D(arr, n, m) FR(i, n) FR(j, m) scan(arr[i][j])
 #define SZ(v) ((int) (v).size())
 
-const int MX = 200000;
-int arr[MX];
-int prefix[MX];
+const ll MX = 200000;
+ll arr[MX];
+ll prefix[MX];
 
 int main() {
-    local
+    fast
 
     scann(N);
     scann(K);
@@ -34,20 +34,16 @@ int main() {
     }
 
     prefix[0] = arr[0];
-
-    for(int i = 1; i < N * 2; i++) {
-        prefix[i] = prefix[i - 1] + arr[i];
-    }
+    for (int i = 1; i < N * 2; i++) prefix[i] = prefix[i - 1] + arr[i];
 
     deque<int> mn;
-    int mx = -1;
+    ll mx = -1;
 
-    FR(i, N * 2) {
-        while(!mn.empty() && prefix[mn.back()] > prefix[i]) mn.pop_back();        
+    FR(i, N * 2) {  
+        while(!mn.empty() && mn.front() < i - K) mn.pop_front();
+        if (!mn.empty() && i > 0) mx = max(mx, prefix[i] - prefix[mn.front()]);
+        while(!mn.empty() && prefix[mn.back()] > prefix[i]) mn.pop_back(); 
         mn.push_back(i);
-        if(!mn.empty() && mn.front() <= i - K) mn.pop_front();
-
-        mx = max(mx, prefix[i] - prefix[mn.front()]);
     }
 
     cout << mx << endl;

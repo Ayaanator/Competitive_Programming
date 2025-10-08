@@ -27,6 +27,7 @@ void solve() {
 
 int main() {
     fast
+
     scann(n);
     scann(m);
     scann(c);
@@ -35,13 +36,24 @@ int main() {
 
     deque<int> mn;
     deque<int> mx;
+    vi pos;
 
     for(int i = 0; i < n; i++) {
-        while(!mn.empty() && arr[mn.front()] > arr[i]) mn.pop_front();
-        while(!mn.empty() && arr[mn.front()] < arr[i]) mn.pop_front();
+        while(!mn.empty() && arr[mn.back()] > arr[i]) mn.pop_back();
+        while(!mx.empty() && arr[mx.back()] < arr[i]) mx.pop_back();
         mn.push_back(i);
         mx.push_back(i);
 
+        if(i >= m - 1 && c >= arr[mx.front()] - arr[mn.front()]) pos.push_back(i - m + 2);
+
+        if(!mx.empty() && mx.front() == i - m + 1) mx.pop_front();
+        if(!mn.empty() && mn.front() == i - m + 1) mn.pop_front();
+    }
+
+    if(pos.empty()) {
+        cout << "NONE\n";
+    } else {
+        for(auto c : pos) cout << c << "\n";
     }
     
     return 0;
