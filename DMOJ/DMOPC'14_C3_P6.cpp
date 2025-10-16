@@ -18,18 +18,13 @@ typedef long long ll;
 #define SZ(v) ((int) (v).size())
 #define dbgArr(arr,n) if(true){ cerr<<#arr<<": "; FR(_i,n) cerr<<(arr)[_i]<<" "; cerr<<endl; }
 
-
-const int MN = 2001;
-const int MT = 10001;
-
-int dp[MN][MT];
-
 int main() {
     local
 
     scann(N);
     scann(T);
     vector<pair<int, int>> ps;
+    vector<vector<int>> dp(N + 1, vector<int>(T + 1, 0));
 
     FR(i, T) {
         
