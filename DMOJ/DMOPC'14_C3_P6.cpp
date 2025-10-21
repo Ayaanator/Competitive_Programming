@@ -21,14 +21,22 @@ typedef long long ll;
 int main() {
     local
 
-    scann(N);
-    scann(T);
-    vector<pair<int, int>> ps;
-    vector<vector<int>> dp(N + 1, vector<int>(T + 1, 0));
+    int N, T;
+    cin >> N >> T;
 
-    FR(i, T) {
-        
+    vector<int> dp(T + 1, 0);
+
+    for (int i = 0; i < N; ++i) {
+        int tp, mp, ta, ma, tg, mg;
+        cin >> tp >> mp >> ta >> ma >> tg >> mg;
+
+        for (int j = T; j >= 0; --j) {
+            if (j >= tp) dp[j] = max(dp[j], dp[j - tp] + mp);
+            if (j >= ta) dp[j] = max(dp[j], dp[j - ta] + ma);
+            if (j >= tg) dp[j] = max(dp[j], dp[j - tg] + mg);
+        }
     }
 
+    cout << dp[T] << "\n";
     return 0;
 }
