@@ -17,7 +17,7 @@ typedef long long ll;
 #define scanArr2D(arr, n, m) FR(i, n) FR(j, m) scan(arr[i][j])
 #define SZ(v) ((int) (v).size())
 #define dbgArr(arr,n) if(true){ cerr<<#arr<<": "; FR(_i,n) cerr<<(arr)[_i]<<" "; cerr<<endl; }
-
+#define int long long
 
 const ll MX = 1e6 + 1;
 const ll MOD = 1e9 + 7;
@@ -29,7 +29,7 @@ ll compare(ll* hsh, ll l, ll r) {
     return (hsh[r + 1] - hsh[l] * BASEPOW[r - l + 1] % MOD + MOD) % MOD;
 }
 
-int main() {
+int32_t main() {
     local
 
     string s;
@@ -40,7 +40,11 @@ int main() {
     BASEPOW[0] = 1;
 
     FOR(i, 1, MX) {
+<<<<<<< HEAD
         BASEPOW[i] = (BASEPOW[i - 1] * BASE) % MOD;
+=======
+        BASEPOW[i] = BASEPOW[i - 1] * BASE % MOD;
+>>>>>>> 8524e7eabe3cecf2f499ed5876a075d71fefcef6
     };
 
     FR(i, s.size()) {
@@ -58,9 +62,6 @@ int main() {
             answer = l;
         }
     }
-
-    dbgArr(hs, s.size());
-    dbgArr(hs2, f.size());
 
     cout << answer << "\n";
     
