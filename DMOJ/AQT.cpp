@@ -1,3 +1,5 @@
+// https://dmoj.ca/problem/cpc21c1p4
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -15,52 +17,43 @@ typedef long long ll;
 #define scanArr2D(arr, n, m) FR(i, n) FR(j, m) scan(arr[i][j])
 #define SZ(v) ((int) (v).size())
 
-const int MX = 10e6;
-unordered_map<int, vector<int>> adj;
-unordered_map<int, bool> visited;
-unordered_map<int, int> max_reach;
+const int MX = (3*1e5) +1;
+vector<int> adj[MX];
+bool visited[MX];
+int max_x = -1, max_y = -1;
 
 void dfs(int node, int source) {
   visited[node] = true;
-  cout << node << endl;
-  int mx = node;
+  //cout << node << endl;
+  if(source > node && node > max_x) {
+    max_x = node;
+    max_y = source;
+  }
 
   for (auto x : adj[node]) {
     if (!visited[x]) {
-      mx = max(mx, max_reach[source]);
       dfs(x, source);
-    } else {
-      mx = max(mx, max_reach[source]);
     }
   }
-
-  max_reach[node] = mx;
 }
 
 int main() {
-  local
+  fast
   int N, M;
   cin >> N >> M;
-  set<int> nodes;
 
   FR(i, M) {
     int a, b;
     cin >> a >> b;
     adj[b].push_back(a);
-    nodes.insert(a);
-    nodes.insert(b);
   }
 
-  vector<int> sorted_nodes(nodes.begin(), nodes.end());
-  sort(sorted_nodes.rbegin(), sorted_nodes.rend());
-
-  for (int node : sorted_nodes) {
-    if (!visited[node]) dfs(node, node);
+  for(int i = N; i > 0; i--) {
+    if(!visited[i]) dfs(i, i);
   }
 
-  for (int node : sorted_nodes) {
-    cout << "(" << node << ", " << max_reach[node] << ")" << endl;
-  }
+  if(max_y == -1 || max_x == -1) cout << -1 << "\n";
+  else cout << max_x << " " << max_y << "\n";
 
   return 0;
 }
