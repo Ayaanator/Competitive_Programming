@@ -18,9 +18,24 @@ typedef long long ll;
 #define SZ(v) ((int) (v).size())
 
 int main() {
-  fast
-
+  fast 
   scann(N);
+  vector<pair<int, int>> obs(N);
+
+  FR(i, N) cin >> obs[i].first >> obs[i].second;
+
+  sort(obs.begin(), obs.end());
+
+  double max_speed = 0.0;
+
+  for (int i = 1; i < N; i++) {
+    int dt = obs[i].first - obs[i - 1].first;
+    int dx = abs(obs[i].second - obs[i - 1].second);
+    double speed = (double)dx / dt;
+    max_speed = max(max_speed, speed);
+  }
+
+  cout << fixed << setprecision(1) << max_speed << "\n";
 
   return 0;
 }
