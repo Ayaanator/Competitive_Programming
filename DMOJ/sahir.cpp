@@ -28,20 +28,31 @@ void dfs(int node) {
   for (auto x : houses[node]) {
     if(x == B) {
       able_to = true;
+      return;
     }
-    dfs(node);
+
+    if(!visited[x])
+      dfs(x);
   }
 }
 
 int main() {
-  fast 
+  local 
   
   cin >> N >> M >> A >> B;
 
   FR(i, M) {
     int X, Y;
     cin >> X >> Y;
+    houses[X].push_back(Y);
+    houses[Y].push_back(X);
   }
+
+  dfs(A);
+
+  if(able_to) cout << "GO SAHIR!\n";
+    else 
+  cout << "NO SAHIR!\n";
 
   return 0;
 }
