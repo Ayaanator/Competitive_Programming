@@ -5,7 +5,6 @@ using namespace std;
 
 typedef vector<int> vi;
 typedef long long ll;
-
 #define FR(i, n) for(int i = 0; i < (n); i++)
 #define FOR(i, a, b) for (int i = (a); i < (b); ++i)
 #define FORR(i, a, b) for (int i = (a); i >= (b); --i)
@@ -17,27 +16,20 @@ typedef long long ll;
 #define scanArr2D(arr, n, m) FR(i, n) FR(j, m) scan(arr[i][j])
 #define SZ(v) ((int) (v).size())
 
-bool able_to = false;
 vector<bool> visited (2005);
 vector<vector<int>> houses(2005);
 int N, M, A, B;
 
 void dfs(int node) {
   visited[node] = true;
-  
   for (auto x : houses[node]) {
-    if(x == B) {
-      able_to = true;
-      return;
-    }
-
     if(!visited[x])
       dfs(x);
   }
 }
 
 int main() {
-  local 
+  fast 
   
   cin >> N >> M >> A >> B;
 
@@ -50,9 +42,9 @@ int main() {
 
   dfs(A);
 
-  if(able_to) cout << "GO SAHIR!\n";
+  if(visited[B]) cout << "GO SAHIR!";
     else 
-  cout << "NO SAHIR!\n";
+  cout << "NO SAHIR!";
 
   return 0;
 }
