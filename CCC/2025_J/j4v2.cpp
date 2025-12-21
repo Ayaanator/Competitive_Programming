@@ -21,52 +21,55 @@ char d[MX];
 
 int main() {
   fast 
- 
- 
-  int tp = 0;
+  
   scann(N);
   FR(i, N) {
     char c;
     cin >> c;
-    if(c=='P')tp++;
     d[i] = c;
   }
-  char prev = 'n';
-  int changed = -1;
+
+
   int max_cons = -1;
-  int c = 0;
+  int p = 0;
 
-  if(N == 1) {
-    cout << 1 << endl;
-    return 0;
-  } else if (N == 2) {
-    cout << 2 << endl;
-    return 0;
-  }
+  for(int l = 0, r = 0; r < N; r++) {
+    if(d[r] == 'P') p++;
+    while(p < 2 && r < N) {
+      max_cons = max(max_cons, r - l + 1);
 
-  FR(i, N) {
-    if(d[i] == 'P') {
-      if(prev == 'n') {
-        c++;
-      }
-      else if(prev == 'S') {
-        c = i - changed;
-      }
-      else if(prev == 'P') { 
-        c = 1;
-      }
-
-      changed = i;
-    } else if(d[i] == 'S') {
-      c++;
+      r++;
+      if(d[r] == 'P') p++;
     }
 
-    prev = d[i];
-    max_cons = max(c, max_cons);
+    if(d[l] == 'P') {
+      l++;
+      p--;
+    }
   }
- 
-  if(tp==0) cout << N-1 << endl;
-  else cout << max_cons << endl;
+
+  /*int l = 0;
+  int r = 1;
+  int p = 0;
+
+  if(d[0] == 'P') p++;
+  if(d[1] == 'P') p++;
+
+  while(r < N) {
+    while(p < 2 && r < N) {
+      r++;
+      if(d[r] == 'P') p++;
+    }
+    
+    if(r != N - 1) {
+      l++;
+      if(d[l - 1] == 'P') p--;
+      max_cons = max(max_cons, r - l + 1);
+    }
+  }*/
+  
+  if(max_cons == N) cout << max_cons - 1 << endl;
+   else cout << max_cons << endl;
 
   return 0;
 }

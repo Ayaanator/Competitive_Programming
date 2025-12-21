@@ -16,9 +16,32 @@ typedef long long ll;
 #define scanArr(arr, n)  FR(i, n) scan(arr[i])
 #define scanArr2D(arr, n, m) FR(i, n) FR(j, m) scan(arr[i][j])
 #define SZ(v) ((int) (v).size())
+const int MN= 3000;
+vector<int> adj[MN];
+bool v[MN];
+int N,M,A,B;
 
+void dfs(int node){
+  v[node]=true;
+    for(auto d : adj[node]){
+      v[d]=true;
+      dfs(d);   
+    }
+    
+}
 int main() {
   fast 
+  cin >> M >> N >> A >> B;
 
+  FR(i,M){
+    int x,y;
+    cin >> x >>y; 
+    adj[x].push_back(y);
+    adj[y].push_back(x);
+  }
+
+  dfs(A);
+  if(v[B])cout << "GO SHAHIR!";
+  else cout << "NO SHAHIR!";
   return 0;
 }
