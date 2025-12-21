@@ -1,4 +1,4 @@
-// https://dmoj.ca/problem/vmss7wc16c3p2
+// https://dmoj.ca/problem/cco13p3
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -16,13 +16,14 @@ typedef long long ll;
 #define scanArr2D(arr, n, m) FR(i, n) FR(j, m) scan(arr[i][j])
 #define SZ(v) ((int) (v).size())
 
-vector<bool> visited (2005);
-vector<vector<int>> houses(2005);
-int N, M, A, B;
+const int MX = 500000;
+bool v[MX];
+vector<vector<int>> nodes(MX);
+int N = 0;
 
 void dfs(int node) {
   visited[node] = true;
-  for (auto x : houses[node]) {
+  for (auto x : nodes[node]) {
     if(!visited[x])
       dfs(x);
   }
@@ -31,20 +32,12 @@ void dfs(int node) {
 int main() {
   fast 
   
-  cin >> N >> M >> A >> B;
+  cin >> N;
 
-  FR(i, M) {
-    int X, Y;
-    cin >> X >> Y;
-    houses[X].push_back(Y);
-    houses[Y].push_back(X);
+  FR(i, N - 1) {
+    int a, b;
+    cin >> a >> b;
   }
-
-  dfs(A);
-
-  if(visited[B]) cout << "GO SAHIR!";
-    else 
-  cout << "NO SAHIR!";
-
+  
   return 0;
 }
