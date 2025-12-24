@@ -1,8 +1,5 @@
 // https://dmoj.ca/problem/cco13p3
 
-#include <bits/stdc++.h>
-using namespace std;
-
 typedef vector<int> vi;
 typedef long long ll;
 #define FR(i, n) for(int i = 0; i < (n); i++)
@@ -16,28 +13,10 @@ typedef long long ll;
 #define scanArr2D(arr, n, m) FR(i, n) FR(j, m) scan(arr[i][j])
 #define SZ(v) ((int) (v).size())
 
-const int MX = 500000;
-bool v[MX];
-vector<vector<int>> nodes(MX);
-int N = 0;
-
-void dfs(int node) {
-  visited[node] = true;
-  for (auto x : nodes[node]) {
-    if(!visited[x])
-      dfs(x);
-  }
-}
+#include <bits/stdc++.h>
+using namespace std;
 
 int main() {
-  fast 
+  fast
   
-  cin >> N;
-
-  FR(i, N - 1) {
-    int a, b;
-    cin >> a >> b;
-  }
-  
-  return 0;
 }
