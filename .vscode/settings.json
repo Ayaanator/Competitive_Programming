@@ -72,6 +72,12 @@
       "xhash": "cpp",
       "xstring": "cpp",
       "xtree": "cpp",
-      "xutility": "cpp"
+      "xutility": "cpp",
+      "string_view": "cpp",
+      "flat_map": "cpp",
+      "flat_set": "cpp",
+      "ranges": "cpp",
+      "span": "cpp",
+      "stacktrace": "cpp"
     }
 }
