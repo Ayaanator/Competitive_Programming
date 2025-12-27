@@ -1,5 +1,8 @@
 // https://dmoj.ca/problem/cco13p3
 
+#include <bits/stdc++.h>
+using namespace std;
+
 typedef vector<int> vi;
 typedef long long ll;
 #define FR(i, n) for(int i = 0; i < (n); i++)
@@ -12,9 +15,6 @@ typedef long long ll;
 #define scanArr(arr, n)  FR(i, n) scan(arr[i])
 #define scanArr2D(arr, n, m) FR(i, n) FR(j, m) scan(arr[i][j])
 #define SZ(v) ((int) (v).size())
-
-#include <bits/stdc++.h>
-using namespace std;
 
 int main() {
   fast
