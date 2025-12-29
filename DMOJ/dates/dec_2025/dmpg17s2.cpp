@@ -1,4 +1,4 @@
-// https://dmoj.ca/problem/cco13p3
+// https://dmoj.ca/problem/dmpg17s2
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -16,28 +16,12 @@ typedef long long ll;
 #define scanArr2D(arr, n, m) FR(i, n) FR(j, m) scan(arr[i][j])
 #define SZ(v) ((int) (v).size())
 
-const int INF = 1e9;
-
 int main() {
   fast
 
-  int c, r, d;
-  cin >> c >> r >> d;
-  vector<vector<pair<int, int>>> cities(c);
-  vector<int> destinations;
+  int N, Q;
+  cin >> N >> Q;
 
-  FR(i, r) {
-    int x, y, w;
-    cin >> x >> y >> w;
-    x--; y--;
-    cities[x].push_back({y, w});
-    cities[y].push_back({x, w});
-  }
-
-  FR(i, d) {
-    scann(n);
-    destinations.push_back(n);
-  }
-
+  
   return 0;
 }
