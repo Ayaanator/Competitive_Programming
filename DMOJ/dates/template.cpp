@@ -19,4 +19,5 @@ typedef long long ll;
 int main() {
   fast
   
+  return 0;
 }

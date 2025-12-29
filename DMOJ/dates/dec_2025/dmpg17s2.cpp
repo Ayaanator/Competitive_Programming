@@ -16,12 +16,47 @@ typedef long long ll;
 #define scanArr2D(arr, n, m) FR(i, n) FR(j, m) scan(arr[i][j])
 #define SZ(v) ((int) (v).size())
 
+const int MN = 1e6 + 5;
+int dsu[MN];
+void initDSU() {
+    for (int i = 0; i < MN; ++i) {
+        dsu[i] = -1;
+    }
+}
+
+int find(int a){
+    return dsu[a] < 0 ? a : dsu[a] = find(dsu[a]);
+}
+
+void merge(int a, int b){
+    a = find(a), b = find(b);
+    if(a != b) dsu[a] = b;
+}
+
 int main() {
   fast
 
   int N, Q;
   cin >> N >> Q;
+  vector<char> ans;
 
-  
+  initDSU();
+  FR(i, Q) {
+    char c;
+    int x, y;
+    cin >> c >> x >> y;
+    
+    if(c == 'A') {
+      merge(x, y);
+    } else {
+      if(find(x) == find(y)) ans.push_back('Y');
+      else ans.push_back('N');
+    }
+  }
+
+  for(auto a : ans) {
+    cout << a << "\n";
+  }
+
   return 0;
 }
