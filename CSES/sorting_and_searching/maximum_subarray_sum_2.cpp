@@ -1,4 +1,5 @@
 // https://dmoj.ca/problem/cco13p3
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -15,43 +16,23 @@ typedef long long ll;
 #define scanArr2D(arr, n, m) FR(i, n) FR(j, m) scan(arr[i][j])
 #define SZ(v) ((int) (v).size())
 
-const int MX = 2e5 + 5;
-//ll arr[MX];
-vector<ll> arr(MX, 0);
-ll dp[MX + 2];
+int main() {
+  fast
+  int n, a, b;
+  cin >> n >> a >> b;
 
-void solve() {
-  scann(n);
+  int arr[n];
+  int prefix[n + 1];
 
   FR(i, n) {
-    scann(a);
-    arr[i] = a;
+    scann(arr[i]);
   }
 
-  dp[n - 1] = 0;
-  dp[n - 2] = max(arr[n - 2], -arr[n - 1]);
+  prefix[0] = arr[0];
 
-  int i = n - 3;
-  while (i >= 0) {
-    ll one = arr[i] + dp[i + 1];
-    ll two = -arr[i + 1] + one;
-    
-    dp[i] = max(one, two);
-
-    if(two > one) {
-      arr.erase(arr.begin() + (i + 2));
-    }
-
-    i--;
+  for(int i = 0; i < n + 1; i++) {
+    prefix[i] += prefix[i - 1] + arr[i];
   }
-
-  cout << dp[0] << "\n";
-}
-
-int main() {
-  local
-  scann(T);
-  FR(i, T) {
-    solve();
-  }
+  
+  return 0;
 }

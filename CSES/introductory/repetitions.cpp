@@ -1,4 +1,5 @@
 // https://dmoj.ca/problem/cco13p3
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -15,43 +16,25 @@ typedef long long ll;
 #define scanArr2D(arr, n, m) FR(i, n) FR(j, m) scan(arr[i][j])
 #define SZ(v) ((int) (v).size())
 
-const int MX = 2e5 + 5;
-//ll arr[MX];
-vector<ll> arr(MX, 0);
-ll dp[MX + 2];
-
-void solve() {
-  scann(n);
-
-  FR(i, n) {
-    scann(a);
-    arr[i] = a;
-  }
-
-  dp[n - 1] = 0;
-  dp[n - 2] = max(arr[n - 2], -arr[n - 1]);
-
-  int i = n - 3;
-  while (i >= 0) {
-    ll one = arr[i] + dp[i + 1];
-    ll two = -arr[i + 1] + one;
-    
-    dp[i] = max(one, two);
-
-    if(two > one) {
-      arr.erase(arr.begin() + (i + 2));
-    }
-
-    i--;
-  }
-
-  cout << dp[0] << "\n";
-}
-
 int main() {
-  local
-  scann(T);
-  FR(i, T) {
-    solve();
+  fast
+  string s;
+
+  cin >> s;
+
+  ll mx = -1;
+  ll reps = 1;
+  char prev = s[0];
+
+  for(int i = 1; i < s.size(); i++) {
+    if(prev == s[i]) reps++;
+    else reps = 1;
+    mx = max(mx, reps);
+    prev = s[i];
   }
+
+  if(s.size() == 1) cout << 1;
+  else cout << mx << "\n";
+  
+  return 0;
 }
