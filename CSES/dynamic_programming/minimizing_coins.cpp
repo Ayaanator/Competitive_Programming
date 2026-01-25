@@ -16,8 +16,9 @@ typedef long long ll;
 #define scanArr2D(arr, n, m) FR(i, n) FR(j, m) scan(arr[i][j])
 #define SZ(v) ((int) (v).size())
 
+const int MXX = 1e8;
 const int MX = 1e6 + 1;
-vector<int> dp(MX, -1);
+vector<int> dp(MX, MXX);
 set<int,  greater<int>> coins;
 
 int main() {
@@ -27,6 +28,8 @@ int main() {
   int x;
   cin >> n >> x;
 
+  dp[0] = 0;
+
   FR(i, n) {
     scann(j);
     coins.insert(j);
@@ -34,31 +37,17 @@ int main() {
   }
 
   for(int i = 1; i <= x; i++) {
-    int targ = 0;
-    int test = dp[i];
-
-    if(dp[i] == -1) {
-      targ = i;
-      int ctr = 0;
-      bool flag = false;
-
-      for(auto c : coins) {
-        if(c <= targ) {
-          if(targ % c == 0) {
-            int another_test = targ / c;
-            dp[i] = (targ / c) + ctr;
-          } else {
-            int times = i / c;
-            targ = i - (times * c);
-            ctr += times + dp[targ];
-            dp[i] = ctr;
-          }
-        }
+    for(auto c : coins) {
+      if(c <= i) {
+        dp[i] = min(dp[i], dp[i - c] + 1);
       }
     }
   }
 
-  cout << dp[x] << "\n";
-  
+  if(dp[x] != MXX)
+    cout << dp[x] << "\n";
+  else
+    cout << -1 << "\n";
+    
   return 0;
 }
