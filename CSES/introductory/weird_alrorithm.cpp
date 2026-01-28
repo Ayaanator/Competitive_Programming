@@ -1,4 +1,4 @@
-// https://dmoj.ca/problem/cco13p3
+// https://cses.fi/problemset/task/1068
 
 #include <bits/stdc++.h>
 using namespace std;

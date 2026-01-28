@@ -1,4 +1,4 @@
-// https://dmoj.ca/problem/cco13p3
+// https://cses.fi/problemset/task/1158
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -16,15 +16,42 @@ typedef long long ll;
 #define scanArr2D(arr, n, m) FR(i, n) FR(j, m) scan(arr[i][j])
 #define SZ(v) ((int) (v).size())
 
-const int MX = 1e5 + 1;
-int dp[][MX];
-
 int main() {
   fast
 
   int n, x;
   cin >> n >> x;
+  vector<pair<int, int>> books;
+  vector<vector<int>> dp(n + 1, vector<int>(x + 1, 0));
 
+  vector<int> prices;
+  vector<int> pages;
+
+  for(int i = 0; i < n; i++) {
+    scann(n);
+    prices.push_back(n);
+  }
+
+  for(int i = 0; i < n; i++) {
+    scann(n);
+    pages.push_back(n);
+  }
+
+  for(int i = 0; i < n; i++) {
+    books.push_back({pages[i], prices[i]});
+  }
+
+  for(int i = 1; i <= n; i++) {
+    for(int j = 1; j <= x; j++) {
+      if(books[i - 1].second <= j) {
+        dp[i][j] = max(books[i - 1].first + dp[i - 1][j - books[i - 1].second], dp[i - 1][j]);
+      } else {
+        dp[i][j] = dp[i - 1][j];
+      }
+    }
+  }
+
+  cout << dp[n][x];
   
   return 0;
 }
