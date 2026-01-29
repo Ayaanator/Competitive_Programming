@@ -1,4 +1,4 @@
-// https://cses.fi/problemset/task/1621
+// https://cses.fi/problemset/task/1084/
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -19,18 +19,48 @@ typedef long long ll;
 int main() {
   fast
   
-  int n;
-  cin >> n;
+  ll n, m, x;
+  ll t = 0;
+  cin >> n >> m >> x;
 
-  set<int> nums;
+  vector<ll> ten(n);
+  vector<ll> apa(m);
+
   for(int i = 0; i < n; i++) {
-    int x;
+    ll x;
     cin >> x;
-    nums.insert(x);
+    ten[i] = x;
   }
 
-  cout << nums.size() << endl;
+  for(int i = 0; i < m; i++) {
+    ll x;
+    cin >> x;
+    apa[i] = x;
+  }
 
+  sort(ten.begin(), ten.end());
+  sort(apa.begin(), apa.end());
+
+  int j = 0;
+
+  for(int i = 0; i < n && j < m; i++) {
+    if(abs(ten[i] - apa[j]) <= x) {
+      i++;
+      j++;
+      t++;
+    } else {
+      if(ten[i] < apa[i]) i++;
+      else j++;
+    }
+  }
+
+  cout << t << "\n";
   
   return 0;
 }
+
+// 45, 60, 60, 80
+// 30, 60, 75
+
+// 30, 30, 40, 40, 50, 50
+// 35, 35, 55, 55
