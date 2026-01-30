@@ -42,14 +42,15 @@ int main() {
   sort(apa.begin(), apa.end());
 
   int j = 0;
+  int i = 0;
 
-  for(int i = 0; i < n && j < m; i++) {
+  while(i < n && j < m) {
     if(abs(ten[i] - apa[j]) <= x) {
       i++;
       j++;
       t++;
     } else {
-      if(ten[i] < apa[i]) i++;
+      if(ten[i] < apa[j]) i++;
       else j++;
     }
   }
