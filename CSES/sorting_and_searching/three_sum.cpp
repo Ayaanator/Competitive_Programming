@@ -17,26 +17,37 @@ typedef long long ll;
 #define SZ(v) ((int) (v).size())
 
 int main() {
-  fast
+  local
   
   int n, x;
   cin >> n >> x;
 
-  vector<int> nums(n);
-  scanArr(nums, n);
-  sort(nums.begin(), nums.end());
+  vector<int> nums(n + 1);
+  for(int i = 1; i <= n; i++) {
+    cin >> nums[i];
+  }
   
-  for(int i = 0; i < n; i++) {
+  for(int i = 1; i <= n; i++) {
     int third = x - nums[i];
     int third_i = i;
-    unordered_map<int, int> seen;
-
-    for(int j = i + 1; i < n; j++) {
+    
+    map<int, int> seen;
+    for(int j = i + 1; j <= n; j++) {
       int second = third - nums[j];
-      if(seen.find())
+      int indx_1 = j;
+      int indx_2 = -1;
+
+      if(seen.find(second) != seen.end()) {
+        indx_2 = seen[second];
+        cout << third_i << indx_2 << " " << indx_1 << "\n";
+        return 0;
+      }
+
+      seen[nums[i]] = i;
     }
   }
 
+  cout << "IMPOSSIBLE\n";
 
   return 0;
 }
