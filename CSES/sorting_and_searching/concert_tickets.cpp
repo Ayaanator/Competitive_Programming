@@ -9,22 +9,18 @@ typedef long long ll;
 #define local freopen("zDAT.txt", "r", stdin);
 
 int main() {
-  local
+  fast
 
   int n, m;
   cin >> n >> m;
-  multiset<int> my_set;
 
-  vector<int> tkt(n);
+  multiset<int> tkt;
   vector<int> ppl(m);
-
-  sort(tkt.begin(), tkt.end());
 
   FR(i, n) {
     int x;
     cin >> x;
-    tkt[i] = x;
-    my_set.insert(x);
+    tkt.insert(x);
   }
 
   FR(i, m) {
@@ -34,12 +30,13 @@ int main() {
   vector<int> res;
 
   for(int i = 0; i < m; i++) {
-    auto it = upper_bound(tkt.begin(), tkt.end(), ppl[i]);
+    auto it = tkt.upper_bound(ppl[i]);
     if(it == tkt.begin()) {
       res.push_back(-1);
     } else {
       it--;
       res.push_back(*it);
+      tkt.erase(it);
     }
   }
 
