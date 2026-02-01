@@ -15,25 +15,34 @@ int main() {
   cin >> n;
 
   int max_time = -1;
-  vector<int> times(1e9 + 1, 0);
+  vector<int> enter(n + 1);
+  vector<int> exit(n + 1);
 
   FR(i, n) {
     int x, y;
     cin >> x >> y;
 
-    max_time = max(max_time, x);
-    max_time = max(max_time, y);
-
-    times[x] = 1;
-    times[y] = -1;
+    enter[i] = x;
+    exit[i] = y;
   }
 
+  sort(enter.begin(), enter.end());
+  sort(exit.begin(), exit.end());
+  
   int mx = -1;
   int ctr = 0;
 
-  for(int i = 0; i <= max_time; i++) {
-    if(times[i] == 1) ctr++;
-    else if(times[i] == -1) ctr--;
+  int en = 0;
+  int ex = 0;
+
+  while(en <= n && ex <= n) {
+    if(enter[en] < exit[ex]) {
+      ctr++;
+      en++;
+    } else {
+      ctr--;
+      ex++;
+    }
 
     mx = max(mx, ctr);
   }
