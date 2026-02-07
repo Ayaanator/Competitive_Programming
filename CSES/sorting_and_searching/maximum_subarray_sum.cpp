@@ -8,15 +8,15 @@ typedef long long ll;
 #define local freopen("zDAT.txt", "r", stdin);
 
 int main() {
-  local
+  fast
 
-  int n;
+  ll n;
   cin >> n; 
-  vector<int> arr(n);
-  for(int i = 0; i < n; i++)cin >> arr[i];
+  vector<ll> arr(n);
+  for(int i = 0; i < n; i++) cin >> arr[i];
 
-  int cur = 0;
-  int global = 0;
+  ll cur = 0;
+  ll global = -1e9;
 
   for(int i = 0; i < n; i++) {
     cur = max(arr[i], arr[i] + cur);
