@@ -22,7 +22,12 @@ int main() {
 
   sort(coins.begin(), coins.end());
 
-  int sum = 0;
+  if(coins[0] > 1) {
+    cout << 1 << "\n";
+    return 0;
+  }
+
+  ll sum = 0;
   
   for(int i = 0; i < n - 1; i++) {
     sum += coins[i];
