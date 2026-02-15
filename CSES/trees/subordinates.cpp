@@ -16,14 +16,39 @@ typedef long long ll;
 #define scanArr2D(arr, n, m) FR(i, n) FR(j, m) scan(arr[i][j])
 #define SZ(v) ((int) (v).size())
 
+const int MX = 2e5 + 10;
+
+bool visited[MX];
+int dp[MX];
+
+void dfs(int x, vector<vector<int>> &adj) {
+  int ans = 0;
+  visited[x] = true;
+
+  for(auto c : adj[x]) {
+    if(!visited[c]) {
+      dfs(c, adj);
+      ans += dp[c] + 1;
+    }
+  }
+
+  dp[x] = ans;
+}
+
 int main() {
   fast
   
   scann(n);
+  vector<vector<int>> adj(n + 1);
 
-  for(int i = 1; i < n; i++) {
+  for(int i = 0; i < n - 1; i++) {
     scann(x);
+    adj[x].push_back(i + 2);
   }
+
+  dfs(1, adj);
+  for(int i = 1; i <= n; i++) 
+    cout << dp[i] << " ";
    
   return 0;
 }
