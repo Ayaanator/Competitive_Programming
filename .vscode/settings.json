@@ -1,5 +1,5 @@
 {
-    "C_Cpp.default.compilerPath": "C:\\MinGW\\bin\\gcc.exe",
+    "C_Cpp.default.compilerPath": "C:\\msys64\\ucrt64\\bin\\g++.exe",
     "files.associations": {
       "iostream": "cpp",
       "ostream": "cpp",
@@ -103,5 +103,30 @@
       "syncstream": "cpp",
       "text_encoding": "cpp",
       "variant": "cpp"
+    }/*,
+    "workbench.colorCustomizations": {
+      "editor.selectionBackground": "#53fff170",
+      "editor.selectionHighlightBackground": "#00ff1555",
+      "editor.inactiveSelectionBackground": "#ff000033"
+    },*/
+    ,"workbench.colorCustomizations": {
+      "[cyberpunk 2077 red]": { 
+          "editor.selectionBackground": "#53fff170",
+          "editor.selectionHighlightBackground": "#e5ff0063",
+          "editor.inactiveSelectionBackground": "#e5ff0063",
+
+          "menu.background": "#0a756e",
+          "menu.foreground": "#0ddac9",
+          "menu.selectionBackground": "#ff2020a4",
+          "menu.selectionForeground": "#ffd900",
+          "menu.border": "#53FFF1",
+
+          "editorSuggestWidget.background": "#0a756e",
+          "editorSuggestWidget.foreground": "#0ddac9",
+          "editorSuggestWidget.selectedBackground": "#ff2020a4",
+          "editorSuggestWidget.highlightForeground": "#ff4444",
+          "editorHoverWidget.background": "#0a756e",
+          "editorHoverWidget.foreground": "#0ddac9"
+      }
     }
 }

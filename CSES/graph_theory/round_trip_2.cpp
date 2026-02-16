@@ -1,11 +1,6 @@
 // INSERT PROBLEM LINK HERE
 
 #include <bits/stdc++.h>
-
-// #include <iostream>
-// #include <vector>
-// #include <algorithm>
-
 using namespace std;
 
 typedef long long ll;
@@ -14,6 +9,9 @@ typedef long long ll;
 
 int main() {
   fast
+  
+  int n = 0; cin >> n;
+  int m = 0; cin >> m;
   
 
   return 0;
