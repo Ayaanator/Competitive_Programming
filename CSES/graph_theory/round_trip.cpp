@@ -32,7 +32,7 @@ bool dfs(int n, int parent, vector<vector<int>>& adj, vector<bool>& vis) {
 
 int main() {
   fast
-    int n = 0; cin >> n;
+  int n = 0; cin >> n;
   int m = 0; cin >> m;
 
   vector<vector<int>> adj(n + 1);
