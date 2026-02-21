@@ -42,6 +42,7 @@ int main() {
     int a = 0; int b = 0;
     cin >> a >> b;
     adj[a].push_back(b);
+    
   }
  
   for(int i = 1; i <= n; i++) {
