@@ -11,49 +11,49 @@ using namespace std;
 typedef long long ll;
 #define fast ios::sync_with_stdio(0); cin.tie(0);
 #define local freopen("zDAT.txt", "r", stdin);
-const int MX = 2e5; 
-int dsu[MX];
+const ll MX = 2e6; 
+ll dsu[MX];
 
-int find(int a) {
+ll find(ll a) {
   return dsu[a] < 0 ? a : dsu[a] = find(dsu[a]);
 }
 
-int merge(int a, int b) {
-  if(find(a) != find(b)) dsu[a] = b;
+void merge(ll a, ll b) {
+  if(find(a) != find(b)) dsu[find(a)] = find(b);
 }
 
-void solve(){
+void solve() {
   fill(dsu, dsu + MX, -1);
 }
 
 int main() {
-  local
-  fill(dsu, dsu + MX, -1);
-  int n = 0; int m = 0;
+  fast
+  solve();
+  ll n = 0; ll m = 0;
   cin >> n >> m;
-  vector<tuple<int, int, int>> edges;
+  vector<tuple<ll, ll, ll>> edges;
 
-  for(int i = 0; i < m; i++) {
-    int a = 0; int b = 0; int c = 0;
+  for(ll i = 0; i < m; i++) {
+    ll a = 0; ll b = 0; ll c = 0;
     cin >> a >> b >> c;
     edges.push_back({c, a, b});
   }
 
   sort(edges.begin(), edges.end());
-  int sum = 0;
+  ll sum = 0;
 
-  for(int i = 0; i < m; i++) {
-    int c = get<0>(edges[i]);
-    int a = get<1>(edges[i]);
-    int b = get<2>(edges[i]);
+  for(ll i = 0; i < m; i++) {
+    ll c = get<0>(edges[i]);
+    ll a = get<1>(edges[i]);
+    ll b = get<2>(edges[i]);
     
     if(find(a) != find(b)) { merge(a, b); sum += c; }
   }
 
-  set<int> nums;
+  set<ll> nums;
 
-  for(int i = 1; i <= n; i++) {
-    if(find(dsu[i]) > 0) nums.insert(find(dsu[i]));
+  for(ll i = 1; i <= n; i++) {
+    nums.insert(find(i));
   }
 
   if(nums.size() > 1) {
