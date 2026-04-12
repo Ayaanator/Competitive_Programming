@@ -1,5 +1,3 @@
-// https://dmoj.ca/problem/cco13p3
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -17,11 +15,49 @@ typedef long long ll;
 #define SZ(v) ((int) (v).size())
 
 void solve() {
-  
+  string A;
+  string B;
+
+  cin >> A >> B;
+
+  string temp = A;
+  /*
+  int ctr_A = 0;
+  int ctr_B = 0;
+
+  while(ctr_B < B.length()) {
+    char char_B = B[ctr_B];
+    if(A[ctr_B] == B[ctr_B]) {
+      ctr_B++;
+      ctr_A++;
+    } else {
+      A[ctr_A] = '#';
+      ctr_A++;
+    }
+  }
+  */
+
+  int ctr = 0;
+
+  for(int i = 0; i < A.length(); i++) {
+    if (ctr < B.size() && A[i] == B[ctr]) {
+      ctr++;
+    } else {
+      A[i] = '#';
+    }
+  }
+
+  cout << A << "\n";
 }
 
 int main() {
   fast
-  
+
+  scann(T);
+
+  FR(i, T) {
+    solve();
+  };
+
   return 0;
 }

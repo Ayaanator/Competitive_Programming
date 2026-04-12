@@ -1,5 +1,3 @@
-// https://dmoj.ca/problem/cco13p3
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -17,11 +15,22 @@ typedef long long ll;
 #define SZ(v) ((int) (v).size())
 
 void solve() {
-  
+  int L, W, E, R;
+
+  cin >> L >> W >> E >> R;
+  int P = L * 2 + W * 2;
+
+  cout << (E / R) / P << "\n";
 }
 
 int main() {
   fast
-  
+
+  scann(T);
+
+  FR(i, T) {
+    solve();
+  };
+
   return 0;
 }
