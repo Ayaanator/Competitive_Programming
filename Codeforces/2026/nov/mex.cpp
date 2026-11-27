@@ -24,7 +24,7 @@ void solve() {
   int n = 0;
   cin >> n;
   vector<int> arr(n + 1, 0);
-  vector<int> freq(1e9 + 1, 0);
+  vector<int> freq(n + 1, 0);
   vector<char> ans;
 
   for(int i = 0; i < n; i++) {
