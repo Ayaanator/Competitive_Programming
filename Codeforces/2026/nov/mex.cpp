@@ -31,7 +31,8 @@ void solve() {
     int x = 0;
     cin >> x;
     arr[i] = x;
-    freq[x]++;
+
+    if(x <= n) freq[x]++;
   }
 
   vector<pair<int,int>> a;
@@ -50,11 +51,11 @@ void solve() {
         } 
         else if (turn == 1) {
           B.push_back(a[i].first);
-          ans.push_back('A');
+          ans.push_back('B');
         } 
         else {
           C.push_back(a[i].first);
-          ans.push_back('A');
+          ans.push_back('C');
         }
         
         freq[a[i].first]--;
