@@ -25,7 +25,7 @@ void solve() {
   cin >> n;
   vector<int> arr(n + 1, 0);
   vector<int> freq(n + 1, 0);
-  vector<char> ans;
+  string ans(n, 'A');
 
   for(int i = 0; i < n; i++) {
     int x = 0;
@@ -41,27 +41,27 @@ void solve() {
   }
   sort(a.begin(), a.end());
 
+  int turn = 0;
   for(int i = 0; i < n; i++) {
-    int turn = 0;
+    
     while(freq[a[i].first] > 0) {
-      while (freq[a[i].first] > 0) {
-        if (turn == 0) {
-          A.push_back(a[i].first);
-          ans.push_back('A');
-        } 
-        else if (turn == 1) {
-          B.push_back(a[i].first);
-          ans.push_back('B');
-        } 
-        else {
-          C.push_back(a[i].first);
-          ans.push_back('C');
-        }
-        
-        freq[a[i].first]--;
-        turn = (turn + 1) % 3;
+      if (turn == 0) {
+        A.push_back(a[i].first);
+        ans[a[i].second] = 'A';
+      } 
+      else if (turn == 1) {
+        B.push_back(a[i].first);
+        ans[a[i].second] = 'B';
+      } 
+      else {
+        C.push_back(a[i].first);
+        ans[a[i].second] = 'C';
       }
+      
+      freq[a[i].first]--;
+      turn = (turn + 1) % 3;
     }
+    
   }
 
   if(MEX(A) + MEX(B) + MEX(C) < 2 * max(MEX(A), max(MEX(B), MEX(C)))) {
