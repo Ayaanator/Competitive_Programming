@@ -73,13 +73,12 @@ void solve() {
   }
 }
 
-int main()
-{
-    int t;
-    cin >> t;
-    while(t--) {
-      solve();
-    }
+int main() {
+  int t;
+  cin >> t;
+  while(t--) {
+    solve();
+  }
 
-    return 0;
+  return 0;
 }
