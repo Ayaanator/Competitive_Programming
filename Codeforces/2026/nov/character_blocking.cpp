@@ -19,7 +19,7 @@ void solve() {
   queue<pair<int, int>> q;
   int time = 0;
   while(queries--) {
-    int type = 0;
+    int type = -1;
     cin >> type;
 
     if(!q.empty() && q.front().second == time) {
