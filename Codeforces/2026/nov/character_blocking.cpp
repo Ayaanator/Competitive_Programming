@@ -31,24 +31,24 @@ int solve() {
     if(type == 1) {
       int pos = 0;
       cin >> pos;
+      pos--;
       if(s1[pos] != s2[pos]) diff--;
       q.push({pos, time + t});
     } else if(type == 2) {
-      int string1 = 0; int pos1 = 0;
-      int string2 = 0; int pos2 = 0;
-      cin >> string1 >> pos1 >> string2 >> pos2;
-      
-      if(string1 == 1) {
-        char c1 = s1[pos1];
-        char c2 = s2[pos2];
-        s2[pos2] = c1;
-        s1[pos1] = c2;
-      } else {
-        char c1 = s2[pos1];
-        char c2 = s1[pos2];
-        s1[pos2] = c1;
-        s2[pos1] = c2;
-      }
+      int st1, p1, st2, p2;
+      cin >> st1 >> p1 >> st2 >> p2;
+      p1--; p2--;
+
+      char& x = (st1 == 1 ? s1 : s2)[p1];
+      char& y = (st2 == 1 ? s1 : s2)[p2];
+
+      if (s1[p1] != s2[p1]) diff--;
+      if (p2 != p1 && s1[p2] != s2[p2]) diff--;
+
+      swap(x, y);
+
+      if (s1[p1] != s2[p1]) diff++;
+      if (p2 != p1 && s1[p2] != s2[p2]) diff++;
     } else {
       if(diff == 0) {
         cout << "YES\n";
