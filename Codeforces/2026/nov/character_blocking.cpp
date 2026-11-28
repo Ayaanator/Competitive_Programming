@@ -1,10 +1,10 @@
-// https://codeforces.com/contest/2148/problem/E
+// https://codeforces.com/problemset/problem/1840/E
 
 #include <bits/stdc++.h>
 
 using namespace std;
 
-int solve() {
+void solve() {
   string s1;
   string s2;
   cin >> s1 >> s2;
